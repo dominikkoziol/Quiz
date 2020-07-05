@@ -1,18 +1,30 @@
-﻿using System;
+﻿using QuizLogic;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Quiz
 {
     class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Główna metoda programu, wywołuję w niej podmetodę ExecuteProgram() ponieważ main nie może być async
+        /// </summary>
+        /// <param name="args"></param>
+        static void Main(string[] args) => ExecuteProgram().GetAwaiter().GetResult();
+        
+        public async static Task ExecuteProgram()
         {
-            ExecuteProgram();
-        }
+            Console.Write($"Witaj, w aplikacji Quiz! Podaj swój pseudonim: ");
+            User.Name = Console.ReadLine();
 
+            Console.Clear();
 
-        public static void ExecuteProgram()
-        {
+            Console.WriteLine($"Witaj {User.Name}! \n Co chcesz zrobić: ");
 
+            //var x = await CategoryController.GetCategories();
+
+            //Console.WriteLine(x.First().Name);
         }
     }
 }
