@@ -1,5 +1,8 @@
-﻿using QuizLogic;
+﻿using Quiz.Extensions;
+using QuizLogic;
+using QuizLogic.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,10 +24,48 @@ namespace Quiz
             Console.Clear();
 
             Console.WriteLine($"Witaj {User.Name}! \n Co chcesz zrobić: ");
+            Console.WriteLine($" 1. Zagraj! \n 2. Zobacz ranking");
 
-            //var x = await CategoryController.GetCategories();
+            int.TryParse(Console.ReadLine(), out int choose);
 
-            //Console.WriteLine(x.First().Name);
+            switch(choose)
+            {
+                case 1: await _startQuiz(); break;
+            }
+        }
+
+        private static async Task _startQuiz()
+        {
+            Console.Clear();
+
+            List<Category> categories = await CategoryController.GetCategories();
+
+            categories.Each((element, index) => Console.WriteLine($"{ index + 1 }. {element.Name}"));
+
+            Console.Write("Wybieram kategorię: ");
+            int.TryParse(Console.ReadLine(), out int choose);
+
+            CategoryController.ChoosedCategory = categories[choose - 1];
+
+            await _quiz();
+
+        }
+
+
+        private static async Task _quiz()
+        {
+            Console.Clear();
+
+            Console.WriteLine($"Wybrałeś: {CategoryController.ChoosedCategory.Name}");
+
+            List<Question> questions = await QuizController.GetQuestions(CategoryController.ChoosedCategory.Id);
+            questions.Each((element, index) => {
+                Console.WriteLine($"{index + 1}. {element.QuestionContent}");
+                Console.WriteLine($" 1. {element.AnswerA}");
+                Console.WriteLine($" 2. {element.AnswerB}");
+                Console.WriteLine($" 3. {element.AnswerC}");
+                Console.WriteLine($" 4. {element.AnswerD}");
+            });
         }
     }
 }

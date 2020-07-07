@@ -18,6 +18,8 @@ namespace QuizLogic.Models
         public string AnswerC { get; set; }
         public string AnswerD { get; set; }
         public int CorrectAnswer { get; set; }
+        public Guid CategoryId { get; set; }
+        public Category Category { get; set; }
         public QuestionLevelEnum QuestionLevel { get; set; }
         /// <summary>
         /// Zaznaczona odpowiedź posiada atrybut [NotMapped] ponieważ nie będzie przechowywana w bazie danych

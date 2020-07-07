@@ -10,6 +10,7 @@ namespace QuizLogic
 {
     public static class CategoryController
     {
+        public static Category ChoosedCategory { get; set; }
         public static async Task<List<Category>> GetCategories()
         {
             using(var context = new QuizEntityContext())
@@ -17,7 +18,6 @@ namespace QuizLogic
                 List<Category> categories = await context.Categories.ToListAsync();
                 return categories;
             }
-        
         }
     }
 }
