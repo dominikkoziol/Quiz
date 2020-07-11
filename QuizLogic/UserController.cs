@@ -4,7 +4,7 @@ using System.Text;
 
 namespace QuizLogic
 {
-    public static class User
+    public static class UserController
     {
         public static string Name { get; set; }
     }

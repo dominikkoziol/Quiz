@@ -13,7 +13,7 @@ namespace QuizLogic.Models
         public Guid Id { get; set; }
         public string UserName { get; set; }
         public int Points { get; set; }
-
+        public DateTime CreatedOn { get; set; }
         public Category Category { get; set; }
         public Guid CategoryId { get; set; }
     }

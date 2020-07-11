@@ -26,6 +26,9 @@ namespace QuizLogic.Models
         /// </summary>
         [NotMapped]
         public int MarkedAnswer { get; set; }
+
+        [NotMapped]
+        public int CollectedPoints { get; set; }
         /// <summary>
         /// Poziom trudności pytań
         /// </summary>
