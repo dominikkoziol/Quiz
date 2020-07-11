@@ -11,14 +11,14 @@ namespace QuizLogic.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string QuestionContent { get; set; }
         public string AnswerA { get; set; }
         public string AnswerB { get; set; }
         public string AnswerC { get; set; }
         public string AnswerD { get; set; }
         public int CorrectAnswer { get; set; }
-        public Guid CategoryId { get; set; }
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
         public QuestionLevelEnum QuestionLevel { get; set; }
         /// <summary>

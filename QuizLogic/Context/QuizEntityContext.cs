@@ -2,6 +2,7 @@
 using QuizLogic.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace QuizLogic.Context
@@ -15,7 +16,8 @@ namespace QuizLogic.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=.\SQLEXPRESS;Database=QuizDb;Trusted_Connection=True;");
+            var sqlitePath = Path.Combine(System.IO.Directory.GetCurrentDirectory(), @"QuizDb.db");
+            optionsBuilder.UseSqlite(@"Data Source=" + sqlitePath);
         }
     }
 

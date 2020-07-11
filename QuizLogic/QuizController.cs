@@ -20,7 +20,7 @@ namespace QuizLogic
         /// </summary>
         /// <param name="categoryId">Id kategorii</param>
         /// <returns>Lista pomieszanych pytań</returns>
-        public static async Task<List<Question>> GetQuestions(Guid categoryId)
+        public static async Task<List<Question>> GetQuestions(int categoryId)
         {
             using (var context = new QuizEntityContext())
             {

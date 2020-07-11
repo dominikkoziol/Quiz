@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuizLogic.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,7 +11,8 @@ namespace QuizLogic.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -23,15 +24,16 @@ namespace QuizLogic.Migrations
                 name: "Questions",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     QuestionContent = table.Column<string>(nullable: true),
                     AnswerA = table.Column<string>(nullable: true),
                     AnswerB = table.Column<string>(nullable: true),
                     AnswerC = table.Column<string>(nullable: true),
                     AnswerD = table.Column<string>(nullable: true),
                     CorrectAnswer = table.Column<int>(nullable: false),
-                    QuestionLevel = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<Guid>(nullable: true)
+                    CategoryId = table.Column<int>(nullable: false),
+                    QuestionLevel = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,17 +43,19 @@ namespace QuizLogic.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Categories",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Results",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     UserName = table.Column<string>(nullable: true),
                     Points = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<Guid>(nullable: false)
+                    CreatedOn = table.Column<DateTime>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
