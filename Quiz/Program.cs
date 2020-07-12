@@ -48,13 +48,14 @@ namespace Quiz
             });
 
             Console.WriteLine("0. Wróć do menu, inny klawisz zakończy działanie programu");
-            int.TryParse(Console.ReadLine(), out int choose);
             Console.Write("Wybieram: ");
+            int.TryParse(Console.ReadLine(), out int choose);
             if (choose == 0)
             {
                 Console.Clear();
                 await _getTheMenuOption();
             }
+            else Environment.Exit(0);
         }
 
        /// <summary>
@@ -168,14 +169,15 @@ namespace Quiz
             await ResultController.SaveQuizResult();
             Console.WriteLine("Twój wynik został zapisany.");
             Console.WriteLine("0. Wróć do menu, inny klawisz zakończy działanie programu");
-            int.TryParse(Console.ReadLine(), out int choose);
             Console.Write("Wybieram: ");
+            int.TryParse(Console.ReadLine(), out int choose);
             if(choose == 0)
             {
                 Console.Clear();
                 await _getTheMenuOption();
             }
-            
+            else Environment.Exit(0);
+
         }
     }
 }
