@@ -12,7 +12,9 @@ namespace QuizLogic
 {
     public static class QuizController
     {
-
+        /// <summary>
+        /// Przechowuje poziom trudności rozgrywanego quizu
+        /// </summary>
         public static QuestionLevelEnum Level;
 
         /// <summary>
@@ -28,6 +30,12 @@ namespace QuizLogic
             }
         }
         
+        /// <summary>
+        /// Udzielanie odpowiedzi, sprawdza czy podana wartość jest prawidłowa
+        /// </summary>
+        /// <param name="question"></param>
+        /// <param name="answer"></param>
+        /// <returns>bool</returns>
         public static bool GetAnswer(Question question, int answer)
         {
             bool isCorrect = answer > 0 && answer < 5;
@@ -40,6 +48,11 @@ namespace QuizLogic
             else return false;
         }
 
+        /// <summary>
+        /// Wynik quizu
+        /// </summary>
+        /// <param name="questions">List<Question>z udzielonymi odpowiedziami</param>
+        /// <returns>INT - liczba punktów za quiz</returns>
         public static int GetResult(List<Question> questions)
         {
             int points = 1;

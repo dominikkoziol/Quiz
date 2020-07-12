@@ -17,4 +17,10 @@
     <ProjectReference Include="..\QuizLogic\QuizLogic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="QuizDb.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

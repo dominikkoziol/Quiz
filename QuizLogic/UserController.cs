@@ -6,6 +6,9 @@ namespace QuizLogic
 {
     public static class UserController
     {
-        public static string Name { get; set; }
+        /// <summary>
+        /// Przechowuje nazwę użytkownika
+        /// </summary>
+        public static string Name { get; set; } = null;
     }
 }
